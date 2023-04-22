@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% load bootstrap4 %}
+
+
+
+  <div class="w-50 rounded mx-auto mt-5 border border-light p-5">
+    <h1 class="bold">글쓰기✏️</h1>
+    <br>
+  <form action="{% url 'movies:create' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% comment %} <input class="text-dark" type="submit" value="submit"/> {% endcomment %}
+    <br>
+    <div class="d-flex justify-content-between">
+      <a class="text-dark">
+        <input style="border-radius: 15px" class="bg-primary index medium text-white p-2" type="submit" value="작성하기"/>
+      </a>
+    </form>
+  
+  
+    <a class="text-dark" href="{% url 'movies:index' %}">
+      <input style="border-radius: 15px" class="p-2 index medium text-dark" type="button" value="뒤로가기"/>
+    </a>
+    </div>
+
+  </div>
+
+{% endblock content %}

@@ -1,0 +1,86 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+{% comment %} <h1 class="bold pt-3 text-white m-3 mt-0 text-center">INDEX</h1>
+<hr align="center" style="width:160px; border:0px; border-top:5px dotted; margin-left:auto; margin-right:auto; margin-bottom:0px;">
+ {% endcomment %}
+
+{% comment %} <a class="text-white" href="{% url 'movies:create' %}">CREATE</a> {% endcomment %}
+<div class="mb-0 px-2 mx-4 text-start">
+<a class="mb-0 text-dark" href="{% url 'movies:create' %}">
+  {% comment %} <input style="border-radius: 15px" class="mb-0 btn btn-primary text-white medium mt-0 text-dark m-2 mx-3" type="button" value="Create"/> {% endcomment %}
+  <input class="opacity-75" style="width:30px;" type="image" src="{% static 'plus.png' %}" type="submit">
+</a>
+<hr style="border-top: 3px dotted;">
+</div>
+
+
+{% for movie in movies %}
+
+<div class="d-flex justify-content-start">
+  <div>
+{% if movie.actor_image %} <!--만약 이미지가 있으면 조건문 들어감-->
+  <a href="{% url 'movies:detail' movie.pk %}"><img style="width:470px;" class="m-5" src="{{movie.actor_image.url}}" alt=""></a> <!--이미지태그 통과-->
+{% endif %}
+  </div>
+
+  <div class="m-5 d-flex flex-column justify-content-center text-left">
+    <a style="font-size:55px; text-decoration: none;" class="medium text-left text-white mb-4" href="{% url 'movies:detail' movie.pk %}">{{movie.title}}</a>
+    <div>
+      {% if movie.score == 1 %}
+      <img style="width: 70px" src="{% static 'star.png' %}"/>
+      {% elif movie.score == 1.5 %}
+      <img style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 35px" src="{% static 'half_star.png' %}"/>
+      {% elif movie.score == 2 %}
+      <img style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 70px" src="{% static 'star.png' %}"/>
+      {% elif movie.score == 2.5 %}
+      <img style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 35px" src="{% static 'half_star.png' %}"/>
+      {% elif movie.score == 3 %}
+      <img style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 70px" src="{% static 'star.png' %}"/>
+      {% elif movie.score == 3.5 %}
+      <img style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 35px" src="{% static 'half_star.png' %}"/>
+      {% elif movie.score == 4 %}
+      <img style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 70px" src="{% static 'star.png' %}"/>
+      {% elif movie.score == 4.5 %}
+      <img style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 35px" src="{% static 'half_star.png' %}"/>
+      {% elif movie.score == 5 %}
+      <img style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 70px" src="{% static 'star.png' %}"/>
+      <img class="ms-2" style="width: 70px" src="{% static 'star.png' %}"/>
+      {% endif %}
+    </div>
+    <br>
+    <p style="font-size:30px;">{{movie.description}}</p>
+  </div>
+</div>
+
+  
+    {% comment %} <hr style=
+    "background:pink;
+    height:1px;
+    border:0;"> {% endcomment %}
+
+
+<hr>
+{% comment %} {% if movie.title != '비긴어게인' %} {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
+
+{% endfor %}
+
+{% endblock content %}

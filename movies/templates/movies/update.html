@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% load bootstrap4 %}
+  <hr/>
+  <div>
+  <form action=" {% url 'movies:update' movie.pk %} " method="POST" enctype="multipart/form-data" class="w-50  rounded mx-auto mt-5 border border-light p-5">
+    {% csrf_token %}
+    <h1 class="bold">수정하기✏️</h1>
+    <br>
+    {% bootstrap_form form %}
+    <input type="reset" value="Reset" class="text-white bg-danger mt-3" style="border-radius: 15px"/>
+    <input type="submit" value="Submit" class="text-white bg-success mt-3" style="border-radius: 15px"/>
+  
+  <hr/>
+  <a class="d-flex justify-content-end" style="text-decoration: none;" href="{% url 'movies:index' %}">
+    <input style="border-radius: 15px" class="index medium text-dark" type="button" value="뒤로가기"/>
+  </a></form>
+  </div>
+  {% comment %} <a sytle="color: #1478CD;" href="{% url 'movies:detail' movie.pk %}">뒤로가기</a> {% endcomment %}
+{% endblock content %}

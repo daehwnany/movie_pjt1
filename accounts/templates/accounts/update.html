@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %} {% load bootstrap4 %}
+
+  <div style="width:620px;" class="rounded mx-auto mt-5 border border-light p-5">
+
+    <div class="text-white">
+      <form action="{% url 'accounts:update' %}" method="POST">
+        {% csrf_token %}{% bootstrap_form form %}
+        {% comment %} {{form.as_p}} {% endcomment %}
+        <br>
+        <div class="d-flex justify-content-between">
+          <input style="border-radius: 15px" class="bg-primary index medium text-white" type="submit" value="Update"/>
+          <a class="text-white medium" href="{% url 'movies:index' %}">Back</a>
+        </div>
+      </form>
+      
+    </div>
+  </div>
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}{% load bootstrap4 %}
+
+  <div style="width:400px;" class="rounded mx-auto mt-5 border border-light p-5">
+
+  <form class="text-white" action="{% url 'accounts:login' %}" method="POST">
+    {% csrf_token %}
+    <div class="medium">{% bootstrap_form form %}</div>
+    <br>
+    {% comment %} <input class="text-dark" type="submit" value="Login"/> {% endcomment %}
+
+    <a style="text-decoration: none;" class="d-flex justify-content-center">
+      <input style="border-radius: 15px" class="bg-primary index medium text-white" type="submit" value="Login"/>
+    </a>
+
+  </form>
+{% endblock content %}
